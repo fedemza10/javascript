@@ -1,3 +1,4 @@
+
 const calcularMostrar = (recargo) => {
   let total = cantidadP * recargo;
   let valorCuota = total / cantidadCuotas;
@@ -13,17 +14,17 @@ let recargo3 = 1.1;
 let recargo6 = 1.2;
 let recargo12 = 1.4;
 
-let nombre = prompt("Cual es tu nombre?").toUpperCase();
+let nombreD = prompt("Cual es tu nombre?").toUpperCase();
 
-if (!nombre /*|| nombre !== '' */) {
+if (!nombreD /*|| nombre !== '' */) {
   alert("Debe introducir un nombre");
   console.log("introducir nombre");
   throw new Error("obligatorio introducir nombre");
 } else {
-  let cartel = "Bienvenido" + " " + nombre;
+  let cartel = "Bienvenido" + " " + nombreD;
   alert(cartel);
   console.log(cartel);
-  console.log(nombre.toUpperCase(), typeof nombre);
+  console.log(nombreD.toUpperCase(), typeof nombreD);
 }
 
 let edad = prompt("Cual es tu edad?");
@@ -51,8 +52,16 @@ if (prestamo != 1) {
 }
 
 let cantidadP = +prompt(
-  "Según tu score, sólo puedes tomar hasta $50.000 en  3, 6 0 12 cuotas con interes."
+  "Según tu score, sólo puedes tomar des $10.000 hasta $50.000 en  3, 6 0 12 cuotas con interes. Ingresa el monto del préstamo"
 );
+while (cantidadP < 10000) {
+  alert(
+    "Sólo puedes tomar de $10.000 hasta $50.000 en  3, 6 0 12 cuotas con interes "
+  );
+  cantidadP = +prompt(
+    "Según tu score, sólo puedes tomar des $10.000 hasta $50.000 en  3, 6 0 12 cuotas con interes.Ingresa el monto del préstamo"
+  );
+}
 if (cantidadP > 50000) {
   alert("Excede límite. Hasta luego");
   console.log("No acepto la propuesta de prestamo");
@@ -66,13 +75,31 @@ if (cantidadP > 50000) {
 let cantidadCuotas = +prompt(" Seleccionar 3, 6 o 12 cuotas");
 console.log(" Elige cuotas");
 if (cantidadCuotas == 3) {
-  calcularMostrar(recargo3)
+  calcularMostrar(recargo3);
 } else if (cantidadCuotas == 6) {
   calcularMostrar(recargo6);
 } else if (cantidadCuotas == 12) {
   calcularMostrar(recargo12);
 } else {
-  alert (' No se ingresó un valor correcto');
+  alert(" No se ingresó un valor correcto");
   console.log("No se ingreso valor correcto.");
-  throw new Error ('El valor ingresado es invalido');
+  throw new Error("El valor ingresado es invalido");
 }
+
+class Deudores {
+  constructor (id, nombreD, cantidadP, recargo) {
+    this.id = id;
+    this.nombreD = nombreD
+    this.cantidadP = cantidadP
+    this.recargo = recargo
+  }
+
+  getId () {
+   return this.id
+  }
+  getName () {
+    return this.name
+  }
+}
+let deudor1 = new Deudores ( )
+deudor1.getName()
