@@ -32,7 +32,7 @@ class AlimentoPerro {
   }
 }
 
-const alimentoPerro1 = new AlimentoPerro(1, " Royal Canin", 100, 8000,);
+const alimentoPerro1 = new AlimentoPerro(1, " Royal Canin", 100, 8000);
 const alimentoPerro2 = new AlimentoPerro(2, " Vital Can", 80, 6000);
 const alimentoPerro3 = new AlimentoPerro(3, " Eukanuba", 600, 7000);
 let razas = [
@@ -47,25 +47,21 @@ console.log(alimentoPerro1.agregarIva());
 alimentoPerro1.getRazas();
 
 class Carrito {
-  constructor (lista) {
-    this.lista = lista
+  constructor(lista) {
+    this.lista = lista;
   }
-  findAllItems () {
-    return 'Este es el listado de tu compra' + '' + this.lista;
-  }
-
-  createItem ( item) {
-    this.lista.push (item);
+  findAllItems() {
+    return "Este es el listado de tu compra" + "" + this.lista;
   }
 
+  createItem(item) {
+    this.lista.push(item);
+  }
 }
-const carroCompra = new Carrito (
-  [ alimentoPerro1, alimentoPerro2]
-  )
-  console.log (carroCompra)
-  carroCompra.createItem (alimentoPerro3)
-  console.log (carroCompra)
-const alimentoPerro4 = new AlimentoPerro (4, 'proplan', 50, 5000);
-carroCompra.createItem ( alimentoPerro4)
-console.log (carroCompra)  
-  
+const carroCompra = new Carrito([alimentoPerro1, alimentoPerro2]);
+console.log(carroCompra);
+carroCompra.createItem(alimentoPerro3);
+console.log(carroCompra);
+const alimentoPerro4 = new AlimentoPerro(4, "proplan", 50, 5000);
+carroCompra.createItem(alimentoPerro4);
+console.log(carroCompra);

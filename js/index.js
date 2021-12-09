@@ -52,7 +52,7 @@ if (prestamo != 1) {
 }
 
 let cantidadP = +prompt(
-  "Según tu score, sólo puedes tomar des $10.000 hasta $50.000 en  3, 6 0 12 cuotas con interes. Ingresa el monto del préstamo"
+  " Ingresa el monto del préstamo. Según tu score, sólo puedes tomar des $10.000 hasta $50.000 en  3, 6 0 12 cuotas con interes. "
 );
 while (cantidadP < 10000) {
   alert(
@@ -86,20 +86,3 @@ if (cantidadCuotas == 3) {
   throw new Error("El valor ingresado es invalido");
 }
 
-class Deudores {
-  constructor (id, nombreD, cantidadP, recargo) {
-    this.id = id;
-    this.nombreD = nombreD
-    this.cantidadP = cantidadP
-    this.recargo = recargo
-  }
-
-  getId () {
-   return this.id
-  }
-  getName () {
-    return this.name
-  }
-}
-let deudor1 = new Deudores ( )
-deudor1.getName()
