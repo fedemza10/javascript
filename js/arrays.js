@@ -40,6 +40,9 @@ let razas = [
   { tipo: "labrador retriever", pelo: "largo" },
   { tipo: "dachschund", pelo: "corto" },
 ];
+razas.forEach (element => {
+  console.log (element.tipo)
+});
 
 console.log(alimentoPerro1.precioSinIva());
 

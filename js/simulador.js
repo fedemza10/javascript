@@ -87,9 +87,10 @@ const calcularMostrar = (recargo) => {
   }
   
   class Deudores {
-    constructor ( nombreD, cantidadP) {
+    constructor ( nombreD, cantidadP,cantidadCuotas) {
       this.nombreD = nombreD
       this.cantidadP = cantidadP
+      this.cantidadCuotas = cantidadCuotas
      
     }
   
@@ -99,11 +100,12 @@ const calcularMostrar = (recargo) => {
     getCantidadP () {
       return this.cantidadP
     }
-    getRecargo() {
-        return this.recargo
+    getCantidadCuotas() {
+        return this.cantidadCuotas
     }
     
   }
-  let deudor1 = new Deudores (nombreD, cantidadP)
+  let deudor1 = new Deudores (nombreD, cantidadP, cantidadCuotas)
   
   console.log (deudor1)
+  
