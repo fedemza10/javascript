@@ -33,9 +33,9 @@ formProducto.addEventListener('submit', () => {
   const cantidad = +inputCantidadProducto.value
   const precio = +inputPrecioProducto.value
 
-  const alimentoPerro6 = new AlimentoPerro (id, nombre, cantidad, precio, true)
+  const alimentoN = new AlimentoPerro (id, nombre, cantidad, precio, true)
 
-  carrito1.createItem(alimentoPerro6)
+  carrito1.createItem(alimentoN)
   console.log (carrito1)
 })
 
