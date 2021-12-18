@@ -26,8 +26,8 @@ const inputNombreProducto = document.getElementById('input-nombre-producto')
 const inputCantidadProducto = document.getElementById('input-cantidad-producto')
 const inputPrecioProducto = document.getElementById('input-precio-producto')
 
-formProducto.addEventListener('submit', () => {
-
+formProducto.addEventListener('submit', (event) => {
+  event.preventDefault()
   const id = +inputIdProducto.value
   const nombre = inputNombreProducto.value  
   const cantidad = +inputCantidadProducto.value
@@ -36,6 +36,7 @@ formProducto.addEventListener('submit', () => {
   const alimentoN = new AlimentoPerro (id, nombre, cantidad, precio, true)
 
   carrito1.createItem(alimentoN)
+  formProducto.reset();
   console.log (carrito1)
 })
 
