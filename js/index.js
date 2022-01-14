@@ -8,11 +8,11 @@ import {
 import { Carrito } from "./carrito.js";
 import { renderList } from "./utils.js";
 
-const carrito1 = new Carrito();
+/*const carrito1 = new Carrito();
 carrito1.createItem(alimentoPerro2);
 const alimentoPerro5 = new AlimentoPerro(20, "proplan", 50, 5000, true);
 carrito1.createItem(alimentoPerro5);
-console.log(carrito1.findAllItems());
+
 
 // Captura evento "mouseover y mouseleave"
 let mouse = document.getElementById("productos-lista");
@@ -65,6 +65,32 @@ formProducto.addEventListener("submit", (event) => {
   carrito1.createItem(alimentoN);
   formProducto.reset();
   console.log(carrito1);
+  
+});
+*/
+
+// JQuery
+
+for (const item of AlimentoPerroData) {
+  $("#productos-lista").append(`<div id= ${item.id}> ${item.nombre}  </div>  `);
+
+  $(`#${item.id}`).click(function () {
+    alert(`El alimento seleccionado es  ${item.nombre} y su precio es $ ${item.precio}`);
+  });
+}
+
+
+//JQuery - Trigger
+
+$("body").prepend('<button id="btn1">BOTON DE PRUEBA</button>');
+$("body").prepend('<input  id="input1" type="text">');
+
+$("#input1").change((event) => {
+  event.preventDefault()
+  console.log ( 'Prueba de  Trigger')
+  alert("Texto de prueba Trigger es " + event.target.value);
 });
 
-renderList("productos-lista", productos);
+$("#btn1").click(() => {
+  $("#input1").trigger("change");
+});
