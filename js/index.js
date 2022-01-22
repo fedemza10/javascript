@@ -67,7 +67,7 @@ formProducto.addEventListener("submit", (event) => {
   console.log(carrito1);
   
 });
-*/
+
 
 // JQuery
 
@@ -94,3 +94,27 @@ $("#input1").change((event) => {
 $("#btn1").click(() => {
   $("#input1").trigger("change");
 });
+
+*/
+
+//AJAX con JQuery
+const  URL_JSON = "db/data.json"
+
+$('body').prepend (`<button id= "btn7"> Boton Ajax </button>`);
+
+$('#btn7').click ( (event) => {  
+  event.preventDefault()
+  $.getJSON (URL_JSON, ( response, status) => {
+      if ( status === 'success') {
+        
+      for (const user of response) 
+        $('#usuarios').append 
+             (`<div> <p> ${user.name}  </p>
+                     <p>${user.lastName} </p> </div>`)
+      }
+    }
+  ) 
+}
+)
+
+
