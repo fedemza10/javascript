@@ -1,0 +1,372 @@
+
+* { margin: 0px;
+padding: 0px;}
+
+
+
+@import "modules/colors";
+@import "modules/width";
+
+
+header { 
+  display:  flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;  
+  ; 
+}
+.header__LogoEmpresa { 
+  display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+ margin-top: 3%; 
+ width: $ancho * 5;
+ }
+ .header__text { 
+   text-align: center;
+ }
+ 
+h1 {
+ color:$color-H1;
+ font-size: 3em;
+ font-family: Arial, Helvetica, sans-serif;
+ font-weight: bold; 
+ word-spacing: 0.5cm;
+ margin-top: 5%;
+ }
+ .body {  width: 100%; }
+
+.background__Header { background-image: linear-gradient(to bottom left, rgb(110, 162, 240), rgb(243, 95, 10));
+   }
+.background__Main { background-image: linear-gradient(to bottom right, rgb(243, 95, 10), rgb(110, 162, 240));
+} 
+.background__Card { background-image: linear-gradient(to top left, rgb(243, 95, 10), rgb(110, 162, 240));}
+  
+.background__Footer { background-image: linear-gradient(to bottom left, rgb(57, 59, 63), rgb(15, 26, 92));
+  } 
+
+  
+
+/* Esto es Menú modificado con SASS*/
+
+.navbar-brand {color:$color-amarillo;}
+.dropdown li a { color:$color-amarillo}
+
+
+
+.card.title .card-text  { color: rgb(0, 0, 0) ;
+font-weight: bolder; }
+
+
+
+ /* Esto es Grid */
+
+ /* Grid Index */
+#grid__Body { 
+  display: grid;
+  grid-template-areas: 
+  " header header header header "
+  " menu menu menu menu "
+  " img img img img "
+  " img img img img "
+  " footer footer footer footer "
+  ; 
+ grid-template-columns: 1fr 1fr 1fr 1fr;
+ grid-template-rows: auto;}
+ .grid__Head { 
+  grid-area: header;}
+.grid__Menu {
+  grid-area: menu; 
+  width: $ancho * 10;
+  
+ }
+.grid__Img {
+ grid-area: img;
+ margin-top: 3%;
+ width: $ancho * 5;}
+.grid__Footer {  
+ grid-area: footer;
+ margin-top: 0;}
+
+ /* Grid Mision - Vision - Quienes somos*/
+
+#grid__Body--Vision { 
+  display: grid;
+  grid-template-areas: 
+  " header header header header "
+  " menu menu menu menu "
+  " article article article article "
+  " footer footer footer footer "; 
+ grid-template-columns: 1fr 1fr 1fr 1fr ;
+ grid-template-rows: auto}
+ .grid__Head { 
+  grid-area: header;
+  }
+ .grid__MenuV {
+  grid-area: menu;
+  width: $ancho * 10;
+  }
+ .grid__Article {
+  grid-area: article;
+  margin-left: 5%
+  ; 
+  /* Operacion con SASS */
+  width: ($ancho * 10) - 5 ; }
+  .grid__Footer {
+    grid-area: footer;
+    margin-top: 0;
+  }
+
+  /* Grid Servicios*/
+
+ #grid__Body--Servicios { 
+  display: grid;
+  grid-template-areas: 
+  " header header header header "
+  " menu menu menu menu "
+  " up up up up "
+  " down down down down "
+  " footer footer footer footer "; 
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto }
+  .grid__Head { 
+    grid-area: header;
+    }
+.grid__MenuS {
+  grid-area: menu; 
+  width: $ancho * 10;
+  ;
+ }
+.grid__Up {
+ grid-area: Up;
+ }
+.grid__Down {
+ grid-area: Down;
+}
+ .grid__Footer {
+  grid-area: footer;}
+
+
+  /* Grid Clientes*/
+
+#grid__Body--Clientes { 
+  display: grid;
+  grid-template-areas: 
+  " header header header header "
+  " menu menu menu menu "
+  " img img img img "
+  " img img img img "
+  " footer footer footer footer "; 
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto}
+  .grid__Head { 
+    grid-area: header;
+    }
+.grid__MenuC {
+  grid-area: menu; 
+  /* Operacion con SASS */
+  width: ($ancho * 11) - 10;
+  
+  }
+.grid__ImgC {
+ grid-area: img;}
+ .grid__Footer {
+  grid-area: footer;}
+
+  /* Grid Contacto */
+
+#grid__Body--Contacto { 
+  display: grid;
+  grid-template-areas: 
+  " header header header header "
+  " menu menu menu menu "
+  " section section section section "
+  " section section section section "
+  " footer footer footer footer "; 
+ grid-template-columns: 1fr 1fr 1fr 1fr;
+ grid-template-rows: auto }
+ .grid__Head { 
+  grid-area: header;
+  }
+ .grid__MenuC {
+  grid-area: menu;
+  width: $ancho * 10;
+  
+  }
+ .grid__SectionC {
+  grid-area: section;
+  
+  }
+  .grid__Footer {
+  
+   grid-area: footer;}
+
+  /* Grid Trabajar  */
+
+#grid__Body--Trabajar { 
+  display: grid;
+  grid-template-areas: 
+  " header header header header "
+  " menu menu menu menu "
+  " section section section section "
+  " section section section section "
+  " footer footer footer footer "; 
+ grid-template-columns: 1fr 1fr 1fr 1fr ;
+ grid-template-rows: auto }
+ .grid__Head { 
+  grid-area: header;
+   }
+ .grid__MenuT {
+  grid-area: menu;
+  width: $ancho * 10;
+  
+  }
+ .grid__SectionT {
+  grid-area: section;
+  }
+  .grid__Footer {
+   grid-area: footer;}
+   
+   /*media Queries*/
+
+   @media screen and (max-width: 300px) { 
+    
+    .header { height: 50%;
+       width: $ancho * 5;
+    }
+    #grid__Body{ 
+    grid-template-areas: 
+    "header header"
+    "menu menu"
+    "img img"
+    "footer footer"}
+  
+  }
+
+ /* Esto es footer aplicando SASS*/
+
+footer {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  justify-content: center;
+  margin-top: 0px;
+}
+   footer button {
+ /* Operacion con SASS */
+    width: ($ancho * 15) / 2 + 2;  
+    padding-left: 0px;
+    border: 1.5px solid;
+    margin-top: 5%;
+     
+      
+  
+      a {
+      color: $color-amarillo;
+      font-size: 1.5em; 
+      font-weight: bold;
+      text-decoration: none; 
+      font-family: 'Open Sans', sans-serif;
+      text-align: center;
+      justify-self: center;
+      
+     }
+     
+  }   
+   
+   footer div .row {
+   flex-wrap: nowrap;    
+   align-items: center;}
+  
+   
+
+  .firma__Footer {
+  color: $color-firma ;
+  text-align: center;
+  font-family: 'Open Sans', sans-serif; 
+  font-style: italic;
+  font-weight: bold;  
+  margin-top: 3%;
+  font-size: 1.3em;
+  }
+
+
+/* Titulos de secciones */
+
+.titulo__1 {
+font-family: Arial, Helvetica, sans-serif;
+color: $color-titulo1 ;
+font-weight: bold;
+text-align: center;
+margin-left: 11%;
+margin-top: 5%;
+box-sizing: border-box;
+width: $ancho * 8; 
+height: 30%;
+padding: 5px;
+border: 1px;}
+.titulo__2 {
+color: $color-titulo2;
+font-family: Arial, Helvetica, sans-serif;
+text-align: center;
+margin-top: 2%;}
+
+
+/* Esto es texto de secciones */
+
+.parrafoTxt {
+box-sizing: border-box; 
+font-family: 'Open Sans', sans-serif; 
+font-weight: bold;
+background-color:$color-fondoparrafo; 
+opacity: 0.8;
+font-size: 120% ;
+width: $ancho * 9;
+margin-left: 5%;
+margin-top: 3%;
+text-align: justify;
+line-height: 2.5; 
+word-spacing: normal;
+
+}
+
+   /* Esto es tablas en la pagina servicios */
+
+.tabla__Th { 
+color: $color-blanco; 
+font-style: italic;
+font-weight: bold; }
+.Tabla__Tr { 
+color: $color-blanco;  
+font-weight: bold; }
+.tabla { 
+margin-bottom: 10%;
+width: $ancho * 9;}
+
+/* Esto es formulario de contacto y trabajar con nosotros*/
+
+.formulario1 { 
+display: block; 
+margin-top: 3%;}
+.formulario1__Flex { 
+box-sizing: border-box; 
+width: $ancho * 5; 
+height: 50%; 
+font-family: Arial, Helvetica, sans-serif;
+color: $color-blanco;
+display: flex; ;
+flex-direction: column; 
+align-content: center;}
+.input { 
+background: $color-blanco; 
+transition: all 2s}
+.input:focus {
+ zoom: 100%;}
+
+/* Esto es de pagina de Clientes*/
+
+.clientes {
+box-sizing: border-box; 
+ 
+margin-top: 4%;}

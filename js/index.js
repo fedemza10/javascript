@@ -1,120 +1,187 @@
-import { AlimentoPerroData } from "./data.js";
-import {
-  AlimentoPerro,
-  alimentoPerro1,
-  alimentoPerro2,
-  alimentoPerro3,
-} from "./alimentoperro.js";
-import { Carrito } from "./carrito.js";
-import { renderList } from "./utils.js";
 
-/*const carrito1 = new Carrito();
-carrito1.createItem(alimentoPerro2);
-const alimentoPerro5 = new AlimentoPerro(20, "proplan", 50, 5000, true);
-carrito1.createItem(alimentoPerro5);
+//Importo desde de archivos .js
 
+import {calcularMostrar} from "./calcular.js"
+import {formulario2} from "./formulario2.js"
 
-// Captura evento "mouseover y mouseleave"
-let mouse = document.getElementById("productos-lista");
-mouse.onmouseover = () => {
-  mouse.style.backgroundColor = "yellow";
-};
-mouse.onmouseleave = () => {
-  mouse.style.backgroundColor = "white";
-};
-
-// Captura Evento sobre botón "Iniciar carga de datos, emite alert y console.log"
-let btn1 = document.getElementById("btn1");
-btn1.onclick = () => {
-  alert(
-    " Al completar este formulario, el producto será ingresado al storage."
-  );
-  console.log(' Esto es una prueba del evento "onclick"');
-};
-
-// Esto viene del storage
-
-const productos = carrito1.findAllItems();
-
-//Formulario para obtener datos
-
-const formProducto = document.getElementById("form-producto");
-const inputIdProducto = document.getElementById("input-id-producto");
-const inputNombreProducto = document.getElementById("input-nombre-producto");
-
-// Captura Evento sobre input "Iniciar carga de datos, emite alert y console.log"
-inputNombreProducto.onchange = () => {
-  console.log();
-};
-
-const inputCantidadProducto = document.getElementById(
-  "input-cantidad-producto"
-);
-const inputPrecioProducto = document.getElementById("input-precio-producto");
-
-// Captura evento Submit y ejecuta función
-formProducto.addEventListener("submit", (event) => {
-  event.preventDefault();
-  const id = +inputIdProducto.value;
-  const nombre = inputNombreProducto.value;
-  const cantidad = +inputCantidadProducto.value;
-  const precio = +inputPrecioProducto.value;
-
-  const alimentoN = new AlimentoPerro(id, nombre, cantidad, precio, true);
-
-  carrito1.createItem(alimentoN);
-  formProducto.reset();
-  console.log(carrito1);
+$(window).on("load", function () {
+  console.log("Todo cargado correctamente 😁");
   
-});
+  
+  //$("#formulario2").hide();
+  
 
+// Se carga un formulario de acceso en prestamos.html y luego continua todo el proceso por JS.
+  
+  // Validación de datos (mediante inputs) para ingresar
+  $("#btn1").click((event) => {
+    
+    let user = $("#iduser").val();
+    let password = $("#password").val();
 
-// JQuery
+    event.preventDefault();
 
-for (const item of AlimentoPerroData) {
-  $("#productos-lista").append(`<div id= ${item.id}> ${item.nombre}  </div>  `);
+    console.log(event.target);
 
-  $(`#${item.id}`).click(function () {
-    alert(`El alimento seleccionado es  ${item.nombre} y su precio es $ ${item.precio}`);
-  });
-}
+    if (user == "CODERHOUSE" && password == "ALFA") {
+      const cartel1 = "Bienvenido";
+      alert(cartel1);
+      // Sólo si el login es correcto, se despliega formulario de  contenido de formulario2.js
 
+     // $("#formulario2").show();
+     
+      $("#formcreditoA").append(`${formulario2}`);
 
-//JQuery - Trigger
-
-$("body").prepend('<button id="btn1">BOTON DE PRUEBA</button>');
-$("body").prepend('<input  id="input1" type="text">');
-
-$("#input1").change((event) => {
-  event.preventDefault()
-  console.log ( 'Prueba de  Trigger')
-  alert("Texto de prueba Trigger es " + event.target.value);
-});
-
-$("#btn1").click(() => {
-  $("#input1").trigger("change");
-});
-
-*/
-
-//AJAX con JQuery
-const  URL_JSON = "db/data.json"
-
-$('body').prepend (`<button id= "btn7"> Boton Ajax </button>`);
-
-$('#btn7').click ( (event) => {  
-  event.preventDefault()
-  $.getJSON (URL_JSON, ( response, status) => {
-      if ( status === 'success') {
-        
-      for (const user of response) 
-        $('#usuarios').append 
-             (`<div> <p> ${user.name}  </p>
-                     <p>${user.lastName} </p> </div>`)
-      }
+    } else {
+      const cartel2 = " Acceso Denegado";
+      alert(cartel2);
+      console.log("acceso denegado");
+      console.log(user + " " + password + " están erroneos");
     }
-  ) 
-}
-)
+  });
+  
+  const  URL_JSON = "db/data.json"
 
+  $('#btnId').click ( (event) => {  
+    event.preventDefault()
+    console.log (event.target)
+    $.getJSON (URL_JSON, ( response, status) => {
+        if ( status === 'success') {
+        
+        for (const user of response) 
+          $('#verificaId').append 
+               (`<div> 
+                     <p> ${user.id}  </p>
+                     <p>${user.name} </p>
+                     <p>${user.Unidad} </p> 
+                       
+                       </div>`)
+        
+       }
+        else  throw new Error ("ERROR")
+      }
+    ) 
+  }
+  )
+  
+  // TENGO QUE DECLARAR LAS VARIABLES POR FUERA DEL AMBITO LOCAL (FUNCION)
+  let cantidadP = Number($("#capital").val());
+  let cantidadCuotas = Number($("#plazo").val());
 
+  $("#btn2").click((event) => {
+    event.preventDefault();
+    // VUELVO A PEDIR EL VALOR DE LAS VARIABLES POR DENTRO DEL SCOPE LOCAL PARA HACER LAS COMPROBACIONES
+
+    cantidadP = Number($("#capital").val());
+    cantidadCuotas = Number($("#plazo").val());
+    console.log(event.target);
+    
+    // CONSOLEO PARA TESTEAR LOS VALORES
+    console.log(cantidadP);
+    console.log(cantidadCuotas);
+
+    while (cantidadP < 100000) {
+      alert("Sólo puedes tomar de $100.000 hasta $500.000 ");
+      throw new Error(
+        "Cortar ejecucion, sólo puedes tomar de $100.000 hasta $500.000."
+      );
+    }
+    if (cantidadP > 500000) {
+      alert("Excede límite.Sólo puedes tomar de $100.000 hasta $500.000");
+      console.log("Excede límite, debe reintentar.");
+      throw new Error("Cortar ejecucion, excede límite.");
+    } else cantidadP >= 100000 || cantidadP <= 500000;
+    {
+      console.log("aceptó y debe elegir cuotas");
+    }
+
+    // Switch para elegir la cantidad de cuotas.
+    switch (cantidadCuotas) {
+      case 3:
+        calcularMostrar(recargo1);
+        break;
+      case 6:
+        calcularMostrar(recargo2);
+        break;
+      case 12:
+        calcularMostrar(recargo3);
+        break;
+      default:
+        alert(" No se ingresó un valor correcto");
+        console.log("No se ingreso valor correcto.");
+        throw new Error("El valor ingresado es invalido");
+    }
+
+    
+    
+    
+  });
+ /* const calcularMostrar = (recargo) => {
+    let  total = cantidadP * recargo;
+    let valorCuota = total / cantidadCuotas;
+    console.log("Total financiado $ " + total.toFixed());
+    console.log(" Valor de cada cuota $ " + valorCuota.toFixed());
+    
+    $("#tabla").append(`
+    <article class="container">
+                             
+      <table class=" table mt-5 ">
+                       
+        <th class=" col tabla__Th d-flex justify-content-start ">  
+          Capital solicitado  = $ ${cantidadP} 
+           </th>
+        <th  class=" col tabla__Th d-flex justify-content-start ">  
+            Total Financiado  = $ ${total.toFixed()} 
+            </th>
+        <th class=" col tabla__Th d-flex justify-content-start ">  
+            Cantidad de cuotas = ${cantidadCuotas}                                     
+                     
+       </table>
+    </article>          
+                            `);
+    for (let i = 1; i <= cantidadCuotas; i++) {
+      console.log("Cuota Nro:  " + i + " - $ " + valorCuota.toFixed(2));
+      $(".esquemaCuota").append(`
+         <article class="container">
+                   
+             <table class=" table ">
+            
+                <th class=" col tabla__Th d-flex justify-content-start "> 
+                  ${"Cuota Nro:  " + i + " - $ " + valorCuota.toFixed(2)} 
+                </th>    
+              </table>
+        </article>          
+                 `);
+    }
+    const deudor = new Deudores ($('#legajo').val(),$('#apellidoyN').val(), total, cantidadCuotas );
+    console.log(deudor)
+    
+  };
+
+  let recargo1 = 1.2;
+  let recargo2 = 1.3;
+  let recargo3 = 1.4;
+
+  class Deudores {
+    constructor(id, nombre,  deuda, cuotas) {
+      this.id = id
+      this.nombre = nombre
+      this.deuda = deuda;
+      this.cuotas = cuotas;
+      
+    }
+    getId() {
+      return this.id
+    }
+
+    getNombre() {
+      return this.nombre;
+    }
+    getDeuda() {
+      return this.deuda;
+    }
+  
+    
+  }
+  */
+});
