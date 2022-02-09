@@ -1,21 +1,10 @@
-
-//Importo desde de archivos .js
-
-import {calcularMostrar} from "./calcular.js"
-import {formulario2} from "./formulario2.js"
-
 $(window).on("load", function () {
-  console.log("Todo cargado correctamente 😁");
-  
-  
-  //$("#formulario2").hide();
-  
+  console.log("Todo cargado correctamente. ");
 
-// Se carga un formulario de acceso en prestamos.html y luego continua todo el proceso por JS.
-  
-  // Validación de datos (mediante inputs) para ingresar
+  $("#formulario2").hide();
+
+  // Validación de datos (mediante inputs) para ingresar, escuchando click de boton.
   $("#btn1").click((event) => {
-    
     let user = $("#iduser").val();
     let password = $("#password").val();
 
@@ -24,14 +13,11 @@ $(window).on("load", function () {
     console.log(event.target);
 
     if (user == "CODERHOUSE" && password == "ALFA") {
+      // Sólo si el login es correcto, se despliega formulario para completar.
       const cartel1 = "Bienvenido";
       alert(cartel1);
-      // Sólo si el login es correcto, se despliega formulario de  contenido de formulario2.js
 
-     // $("#formulario2").show();
-     
-      $("#formcreditoA").append(`${formulario2}`);
-
+      $("#formulario2").show();
     } else {
       const cartel2 = " Acceso Denegado";
       alert(cartel2);
@@ -39,44 +25,20 @@ $(window).on("load", function () {
       console.log(user + " " + password + " están erroneos");
     }
   });
-  
-  const  URL_JSON = "db/data.json"
 
-  $('#btnId').click ( (event) => {  
-    event.preventDefault()
-    console.log (event.target)
-    $.getJSON (URL_JSON, ( response, status) => {
-        if ( status === 'success') {
-        
-        for (const user of response) 
-          $('#verificaId').append 
-               (`<div> 
-                     <p> ${user.id}  </p>
-                     <p>${user.name} </p>
-                     <p>${user.Unidad} </p> 
-                       
-                       </div>`)
-        
-       }
-        else  throw new Error ("ERROR")
-      }
-    ) 
-  }
-  )
-  
-  // TENGO QUE DECLARAR LAS VARIABLES POR FUERA DEL AMBITO LOCAL (FUNCION)
   let cantidadP = Number($("#capital").val());
   let cantidadCuotas = Number($("#plazo").val());
 
+  // Escucho click de boton y ejecuto según la informacion introducida mediante inputs.
+
   $("#btn2").click((event) => {
     event.preventDefault();
-    // VUELVO A PEDIR EL VALOR DE LAS VARIABLES POR DENTRO DEL SCOPE LOCAL PARA HACER LAS COMPROBACIONES
 
     cantidadP = Number($("#capital").val());
     cantidadCuotas = Number($("#plazo").val());
     console.log(event.target);
-    
-    // CONSOLEO PARA TESTEAR LOS VALORES
+
+    // Hago console.log para testear valores.
     console.log(cantidadP);
     console.log(cantidadCuotas);
 
@@ -96,6 +58,7 @@ $(window).on("load", function () {
     }
 
     // Switch para elegir la cantidad de cuotas.
+
     switch (cantidadCuotas) {
       case 3:
         calcularMostrar(recargo1);
@@ -111,17 +74,16 @@ $(window).on("load", function () {
         console.log("No se ingreso valor correcto.");
         throw new Error("El valor ingresado es invalido");
     }
-
-    
-    
-    
   });
- /* const calcularMostrar = (recargo) => {
-    let  total = cantidadP * recargo;
+
+  // Si los datos ingresados mediante inputs son válidos, renderiza, itera y envía a LocalStorage
+
+  const calcularMostrar = (recargo) => {
+    let total = cantidadP * recargo;
     let valorCuota = total / cantidadCuotas;
     console.log("Total financiado $ " + total.toFixed());
     console.log(" Valor de cada cuota $ " + valorCuota.toFixed());
-    
+
     $("#tabla").append(`
     <article class="container">
                              
@@ -141,7 +103,7 @@ $(window).on("load", function () {
                             `);
     for (let i = 1; i <= cantidadCuotas; i++) {
       console.log("Cuota Nro:  " + i + " - $ " + valorCuota.toFixed(2));
-      $(".esquemaCuota").append(`
+      $("#esquemaCuota").append(`
          <article class="container">
                    
              <table class=" table ">
@@ -153,25 +115,35 @@ $(window).on("load", function () {
         </article>          
                  `);
     }
-    const deudor = new Deudores ($('#legajo').val(),$('#apellidoyN').val(), total, cantidadCuotas );
-    console.log(deudor)
-    
+    const deudor = new Deudores(
+      $("#legajo").val(),
+      $("#apellidoyN").val(),
+      $("#unidadNegocio").val(),
+      total,
+      cantidadCuotas
+    );
+    console.log(deudor);
+    localStorage.setItem("Deuda", JSON.stringify(deudor));
   };
+
+  // Recargo a aplicar según cantidad de cuotas seleccionadas
 
   let recargo1 = 1.2;
   let recargo2 = 1.3;
   let recargo3 = 1.4;
 
+  // Constructor para identificar a los deudores que son subidos al LocalStorage
+
   class Deudores {
-    constructor(id, nombre,  deuda, cuotas) {
-      this.id = id
-      this.nombre = nombre
+    constructor(id, nombre, unidad, deuda, cuotas) {
+      this.id = id;
+      this.nombre = nombre;
+      this.unidad = unidad;
       this.deuda = deuda;
       this.cuotas = cuotas;
-      
     }
     getId() {
-      return this.id
+      return this.id;
     }
 
     getNombre() {
@@ -180,8 +152,5 @@ $(window).on("load", function () {
     getDeuda() {
       return this.deuda;
     }
-  
-    
   }
-  */
 });
